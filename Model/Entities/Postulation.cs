@@ -19,7 +19,5 @@ namespace Model.Entities
         public DateTime Date { get; set; }
 
         public string Statut { get; set; }
-
-        public List<Postulation> postulations { get; set; }
     }
 }
