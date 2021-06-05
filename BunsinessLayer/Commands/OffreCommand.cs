@@ -1,4 +1,5 @@
 ﻿using Console;
+using Model;
 using Model.Entities;
 using System;
 using System.Collections;
