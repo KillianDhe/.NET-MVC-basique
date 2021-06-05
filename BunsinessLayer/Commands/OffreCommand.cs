@@ -20,44 +20,48 @@ namespace BunsinessLayer.Commands
         }
 
         /// <summary>
-        /// Ajouter une offre
+        /// Ajouter l'offre en base à partir du contexte
         /// </summary>
-        public int AjouterOffre(Offre offre)
+        /// <param name="e">Offre à ajouter</param>
+        /// <returns>Identifiant de l'offre ajouté</returns>
+        public int Ajouter(Offre o)
         {
-           _contexte.Offres.Add(offre);
-            _contexte.SaveChanges();
-            return offre.Id;
+            _contexte.Offres.Add(o);
+            return _contexte.SaveChanges();
         }
-
 
         /// <summary>
-        /// Supprimer une offre
+        /// Modifier un offre déjà présent en base à partir du contexte
         /// </summary>
-        public void SupprimerOffre(Offre offre)
+        /// <param name="o">Offre à modifier</param>
+        public void Modifier(Offre o)
         {
-            Offre offreToDelete = _contexte.Offres.Find(offre.Id);
-            if (offreToDelete != null)
+            Offre upOff = _contexte.Offres.Where(emp => emp.Id == o.Id).FirstOrDefault();
+            if (upOff != null)
             {
-                _contexte.Offres.Remove(offre);
-
+                upOff.Intitule = o.Intitule;
+                upOff.Responsable = o.Responsable;
+                upOff.Salaire = o.Salaire;
+                upOff.Statut = o.Statut;
+                upOff.Date = o.Date;
+                upOff.Description = o.Description;
+                upOff.Postuations = o.Postuations;
             }
             _contexte.SaveChanges();
         }
 
-
-        public void ModifierOffre(Offre offre)
+        /// <summary>
+        /// Supprimer un offre en base à partir du contexte et de son identifiant
+        /// </summary>
+        /// <param name="offreId">Identifiant de l'offre à supprimer</param>
+        public void Supprimer(int offreId)
         {
-            Offre offreToEdit = _contexte.Offres.Find(offre.Id);
-            if(offreToEdit != null)
+            Offre delOff = _contexte.Offres.Where(off => off.Id == offreId).FirstOrDefault();
+            if (delOff != null)
             {
-                offre.Description = offre.Description;
-                offre.Date = offre.Date;
-                offre.Intitule = offre.Intitule;
-                offre.Salaire = offre.Salaire;
-                offre.Statut = offre.Statut;
+                _contexte.Offres.Remove(delOff);
             }
             _contexte.SaveChanges();
-
         }
 
     }

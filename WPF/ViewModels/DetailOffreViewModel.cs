@@ -1,4 +1,5 @@
-﻿using Model.Entities;
+﻿using BunsinessLayer;
+using Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace WPF.ViewModels
 {
     public class DetailOffreViewModel : BaseViewModel
     {
+        private int _id;
         private string _intitule;
         private DateTime _date;
         private string _description;
@@ -26,6 +28,7 @@ namespace WPF.ViewModels
         /// </summary>
         public DetailOffreViewModel(Offre o)
         {
+            _id = o.Id;
             _intitule = o.Intitule;
             _date = o.Date;
             _description = o.Description;
@@ -135,7 +138,16 @@ namespace WPF.ViewModels
 
         private void saveOffre()
         {
-            // Todo : Save l'offre en BDD
+            BusinessManager.Instance.ModifierOffre(new Offre
+            {
+                Id = _id,
+                Intitule = _intitule,
+                Date = _date,
+                Description = _description,
+                Salaire = _salaire,
+                Responsable = _responsable,
+                Statut = _statut
+            });
         }
     }
 }

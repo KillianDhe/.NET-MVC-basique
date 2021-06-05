@@ -18,7 +18,7 @@ namespace Model.Entities
         public int Anciennete { get; set; }
 
         public string Biographie { get; set; }
-        public List<Postulation> Postuations { get; set; }
+        public List<Postulation> Postulations { get; set; }
 
         public List<Formation> Formations { get; set; }
         public List<Experience> Experience { get; set; }
