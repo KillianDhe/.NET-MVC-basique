@@ -73,11 +73,16 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\Common\BaseViewModel.cs" />
     <Compile Include="ViewModels\Common\RelayCommand.cs" />
+    <Compile Include="ViewModels\DetailEmployeViewModel.cs" />
     <Compile Include="ViewModels\DetailOffreViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ListEmployesViewModel.cs" />
     <Compile Include="ViewModels\ListOffresViewModel.cs" />
     <Compile Include="Views\DetailOffre.xaml.cs">
       <DependentUpon>DetailOffre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListeEmployes.xaml.cs">
+      <DependentUpon>ListeEmployes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ListeOffre.xaml.cs">
       <DependentUpon>ListeOffre.xaml</DependentUpon>
@@ -97,6 +102,10 @@
     <Page Include="Views\DetailOffre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListeEmployes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ListeOffre.xaml">
       <SubType>Designer</SubType>

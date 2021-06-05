@@ -14,7 +14,7 @@ namespace WPF.ViewModels
         public ListEmployesViewModel()
         {
             _employes = new ObservableCollection<DetailEmployeViewModel>();
-            foreach (Employe employe in BusinessManager.Instance.GetAllEmployees())
+            foreach (Employe employe in BusinessManager.Instance.GetAllEmploye())
             {
                 _employes.Add(new DetailEmployeViewModel(employe));
             }

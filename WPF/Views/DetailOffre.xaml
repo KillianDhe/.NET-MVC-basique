@@ -55,8 +55,9 @@
 
 
         <local:ListeEmployes
-                Grid.Row="1"
-                DataContext="{Binding ListEmployes}">
+                Grid.Row="4"
+                 Grid.ColumnSpan="5"
+                DataContext="{Binding ListEmployeViewModel}">
         </local:ListeEmployes>
 
         <materialDesign:Badged

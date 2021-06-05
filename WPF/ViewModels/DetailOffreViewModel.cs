@@ -13,6 +13,9 @@ namespace WPF.ViewModels
 {
     public class DetailOffreViewModel : BaseViewModel
     {
+        private ListEmployesViewModel listEmployeViewModel = null;
+
+
         private int _id;
         private string _intitule;
         private DateTime _date;
@@ -29,6 +32,8 @@ namespace WPF.ViewModels
         /// </summary>
         public DetailOffreViewModel(Offre o)
         {
+            listEmployeViewModel = new ListEmployesViewModel();
+
             _id = o.Id;
             _intitule = o.Intitule;
             _date = o.Date;
@@ -36,6 +41,15 @@ namespace WPF.ViewModels
             _salaire = o.Salaire;
             _responsable = o.Responsable;
             _statut = o.Statut;
+        }
+
+        /// <summary>
+        /// Obtient ou définit le listEmployesViewModel
+        /// </summary>
+        public ListEmployesViewModel ListEmployeViewModel
+        {
+            get { return listEmployeViewModel; }
+            set { listEmployeViewModel = value; }
         }
 
         /// <summary>

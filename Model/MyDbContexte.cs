@@ -11,7 +11,7 @@ namespace Model
 {
     public class MyDbContexte : DbContext
     {
-        public MyDbContexte() : base("connection")
+        public MyDbContexte() : base("connectionString")
         {
             Database.SetInitializer<MyDbContexte>(new DropCreateDatabaseIfModelChanges<MyDbContexte>());
         }
