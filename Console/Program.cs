@@ -14,8 +14,8 @@ namespace Console
             try
             {
                 MyDbContexte contexte = new MyDbContexte();
-                contexte.Employees.Add(new Model.Entities.Employe() { Nom = "jean", Prenom = "Paul", Anciennete = 1, Biographie = " iufh QH UHsbf FB Quhhf uiQHF", DateDeNaissance = DateTime.Now });
-                contexte.Employees.Add(new Model.Entities.Employe() { Nom = "Clément", Prenom = "Maisonhaute", Anciennete = 8, Biographie = "Bonjour, je m'appelle cleménet et nik", DateDeNaissance = DateTime.Now.AddDays(-1), });
+                contexte.Employes.Add(new Model.Entities.Employe() { Nom = "jean", Prenom = "Paul", Anciennete = 1, Biographie = " iufh QH UHsbf FB Quhhf uiQHF", DateDeNaissance = DateTime.Now });
+                contexte.Employes.Add(new Model.Entities.Employe() { Nom = "Clément", Prenom = "Maisonhaute", Anciennete = 8, Biographie = "Bonjour, je m'appelle cleménet et nik", DateDeNaissance = DateTime.Now.AddDays(-1), });
 
                 contexte.Offres.Add(new Model.Entities.Offre() { Description = "Description", Intitule = "c une offre", Salaire = 10000, Date = DateTime.Now, Statut = new Model.Entities.Statut() { Libelle = "statut" } });
                 contexte.SaveChanges();

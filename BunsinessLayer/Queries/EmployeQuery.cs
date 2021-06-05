@@ -28,7 +28,7 @@ namespace BunsinessLayer.Queries
         /// <returns>IQueryable d'Employees</returns>
         public IQueryable<Employe> GetAll()
         {
-            return _contexte.Employees;
+            return _contexte.Employes;
         }
 
 
@@ -36,9 +36,14 @@ namespace BunsinessLayer.Queries
         /// Récupérer toutes les Employees
         /// </summary>
         /// <returns>IQueryable d'Employees</returns>
-        public IQueryable<Employe> GetById(int id)
+        public Employe GetById(int id)
         {
-            return _contexte.Employees.Where(e => e.Id == id);
+            Employe e = _contexte.Employes.Find(id);
+            if (e != null)
+            {
+                return e;
+            }
+            return null;
         }
 
         /// <summary>
@@ -47,7 +52,7 @@ namespace BunsinessLayer.Queries
         /// <returns>IQueryable d'offres</returns>
         public IQueryable<Employe> GetAllByNom(string nom)
         {
-            return _contexte.Employees.Where(e => e.Nom == nom);
+            return _contexte.Employes.Where(e => e.Nom == nom);
         }
 
 
@@ -57,15 +62,21 @@ namespace BunsinessLayer.Queries
         /// <returns>IQueryable d'Employees</returns>
         public IQueryable<Employe> GetAllByNomPrenom(string nom, string prenom)
         {
-            return _contexte.Employees.Where(e => e.Prenom == prenom && e.Nom == nom);
+            return _contexte.Employes.Where(e => e.Prenom == prenom && e.Nom == nom);
         }
+
+        public IQueryable<Employe> GetAllPostulantsByOffreId(int offreId)
+        {
+            return _contexte.Postulations.Where(p => p.OffreId == offreId).Select(p => p.Employe);    
+        }
+
 
         public void AjouterPostulation(int employeId, Postulation postulation)
         {
-            Employe employe = _contexte.Employees.Find(employeId);
+            Employe employe = _contexte.Employes.Find(employeId);
             if(employe != null)
             {
-                employe.Postuations.Add(postulation);
+                employe.Postulations.Add(postulation);
             }
             _contexte.SaveChanges();
         }

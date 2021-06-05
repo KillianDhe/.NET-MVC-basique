@@ -21,7 +21,7 @@ namespace Model.Mapping
             Property(e => e.DateDeNaissance).HasColumnName("EMP_DATENAISSANCE");
             Property(e => e.Anciennete).HasColumnName("EMP_ANCIENNETE");
             Property(e => e.Biographie).HasColumnName("EMP_BIOGRAPHIE");
-            HasMany(e => e.Postuations).WithRequired(p => p.Employe).HasForeignKey(p => p.EmployeId);
+            HasMany(e => e.Postulations).WithRequired(p => p.Employe).HasForeignKey(p => p.EmployeId);
             HasMany(e => e.Formations).WithRequired(p => p.Employe).HasForeignKey(p => p.EmployeId);
             HasMany(e => e.Experience).WithRequired(p => p.employe).HasForeignKey(p => p.EmployeId);
 

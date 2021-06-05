@@ -32,9 +32,14 @@ namespace BunsinessLayer.Queries
         /// Récupérer toutes les offres
         /// </summary>
         /// <returns>IQueryable d'offres</returns>
-        public IQueryable<Offre> GetById(int id)
+        public Offre GetById(int id)
         {
-            return _contexte.Offres.Where( o => o.Id == id);
+            Offre o = _contexte.Offres.Find(id);
+            if (o != null)
+            {
+                return o;
+            }
+            return null;
         }
 
         /// <summary>

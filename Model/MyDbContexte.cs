@@ -11,7 +11,7 @@ namespace Model
 {
     public class MyDbContexte : DbContext
     {
-        public MyDbContexte() : base("connectionString")
+        public MyDbContexte() : base("connection")
         {
             Database.SetInitializer<MyDbContexte>(new DropCreateDatabaseIfModelChanges<MyDbContexte>());
         }
@@ -32,7 +32,7 @@ namespace Model
 
         }
 
-        public IDbSet<Employe> Employees { get; set; }
+        public IDbSet<Employe> Employes { get; set; }
         public IDbSet<Offre> Offres { get; set; }
         public IDbSet<Statut> Statuts { get; set; }
         public IDbSet<Experience> Experiences { get; set; }

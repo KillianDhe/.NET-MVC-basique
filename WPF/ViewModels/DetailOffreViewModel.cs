@@ -1,4 +1,5 @@
-﻿using Model.Entities;
+﻿using BunsinessLayer;
+using Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,14 +13,14 @@ namespace WPF.ViewModels
 {
     public class DetailOffreViewModel : BaseViewModel
     {
-
+        private int _id;
         private string _intitule;
         private DateTime _date;
         private string _description;
         private float _salaire;
         private string _responsable;
         private Statut _statut;
-        private ICollection<Postulation> _postulations;
+        private ICollection<Employe> employes;
         private RelayCommand _saveOffre;
 
         /// <summary>
@@ -28,14 +29,13 @@ namespace WPF.ViewModels
         /// </summary>
         public DetailOffreViewModel(Offre o)
         {
-
+            _id = o.Id;
             _intitule = o.Intitule;
             _date = o.Date;
             _description = o.Description;
             _salaire = o.Salaire;
             _responsable = o.Responsable;
             _statut = o.Statut;
-            _postulations = o.Postuations;
         }
 
         /// <summary>
@@ -113,15 +113,16 @@ namespace WPF.ViewModels
         /// <summary>
         /// Postulation pour cette offre
         /// </summary>
-        public ICollection<Postulation> Postulations
+        public ICollection<Employe> Employes
         {
-            get { return _postulations; }
+            get { return employes; }
             set
             {
-                _postulations = value;
+                employes = value;
                 OnPropertyChanged("Postulations");
             }
         }
+
 
         /// <summary>
         /// Commande pour sauvegarder une offre
@@ -138,7 +139,16 @@ namespace WPF.ViewModels
 
         private void saveOffre()
         {
-            // Todo : Save l'offre en BDD
+            BusinessManager.Instance.ModifierOffre(new Offre
+            {
+                Id = _id,
+                Intitule = _intitule,
+                Date = _date,
+                Description = _description,
+                Salaire = _salaire,
+                Responsable = _responsable,
+                Statut = _statut
+            });
         }
     }
 }
