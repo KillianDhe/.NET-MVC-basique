@@ -4,9 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:WPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50px"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:ColorZone
+                Mode="PrimaryMid"
+                Padding="16">
+            <DockPanel>
+                <materialDesign:PopupBox
+                        DockPanel.Dock="Right"
+                        PlacementMode="BottomAndAlignRightEdges">
+                    <ListBox>
+                        <ListBoxItem
+                                Content="Ajouter une offre" />
+                        <ListBoxItem
+                                Content="Supprimer l'offre" />
+                        <ListBoxItem
+                                Content="Quitter" />
+                    </ListBox>
+                </materialDesign:PopupBox>
+                <StackPanel
+                        Orientation="Horizontal">
+                    <TextBlock
+                            VerticalAlignment="Center"
+                            Margin="16 0 0 0"
+                            Text="Desktop-App" FontSize="16" />
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <local1:ListeOffre
+                Grid.Row="1"
+                DataContext="{Binding ListOffresViewModel}">
+        </local1:ListeOffre>
     </Grid>
 </Window>
+

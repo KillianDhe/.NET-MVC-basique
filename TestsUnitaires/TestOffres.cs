@@ -17,6 +17,7 @@ namespace TestsUnitaires
             BusinessManager manager = BusinessManager.Instance;
             List<Offre> offres = manager.GetAllOffres();
             Assert.IsNotNull(offres);
+            Assert.IsTrue(offres.Count > 0);
         }
 
         [TestMethod]

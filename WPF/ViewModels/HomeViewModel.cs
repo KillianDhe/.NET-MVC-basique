@@ -9,7 +9,21 @@ namespace WPF.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        private ListOffresViewModel _listeProduitViewModel = null;
+        private ListOffresViewModel _listeOffreViewModel = null;
+
+        public HomeViewModel()
+        {
+            _listeOffreViewModel = new ListOffresViewModel();
+        }
+
+        /// <summary>
+        /// Obtient ou définit le ListOffreViewModel
+        /// </summary>
+        public ListOffresViewModel ListOffresViewModel
+        {
+            get { return _listeOffreViewModel; }
+            set { _listeOffreViewModel = value; }
+        }
 
     }
 }
