@@ -65,6 +65,12 @@ namespace BunsinessLayer.Queries
             return _contexte.Employes.Where(e => e.Prenom == prenom && e.Nom == nom);
         }
 
+        public IQueryable<Employe> GetAllPostulantsByOffreId(int offreId)
+        {
+            return _contexte.Postulations.Where(p => p.OffreId == offreId).Select(p => p.Employe);    
+        }
+
+
         public void AjouterPostulation(int employeId, Postulation postulation)
         {
             Employe employe = _contexte.Employes.Find(employeId);

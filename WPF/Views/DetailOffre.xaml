@@ -12,6 +12,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -52,11 +53,18 @@
                  VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
                  IsEnabled="{Binding ElementName=toggleModif, Path=IsChecked}"/>
 
+
+        <local:ListeEmployes
+                Grid.Row="1"
+                DataContext="{Binding ListEmployes}">
+        </local:ListeEmployes>
+
         <materialDesign:Badged
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right"
-                Grid.Column="4" Grid.Row="4"
+                Grid.Column="4" Grid.Row="5"
                 BadgeColorZoneMode="PrimaryDark">
+            
             <Button
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Command="{Binding SaveOffre}"

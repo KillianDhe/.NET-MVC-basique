@@ -2,6 +2,7 @@
 using Model.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace WPF.ViewModels
         private float _salaire;
         private string _responsable;
         private Statut _statut;
-        private ICollection<Postulation> _postulations;
+        private ICollection<Employe> employes;
         private RelayCommand _saveOffre;
 
         /// <summary>
@@ -35,7 +36,6 @@ namespace WPF.ViewModels
             _salaire = o.Salaire;
             _responsable = o.Responsable;
             _statut = o.Statut;
-            _postulations = o.Postuations;
         }
 
         /// <summary>
@@ -113,15 +113,16 @@ namespace WPF.ViewModels
         /// <summary>
         /// Postulation pour cette offre
         /// </summary>
-        public ICollection<Postulation> Postulations
+        public ICollection<Employe> Employes
         {
-            get { return _postulations; }
+            get { return employes; }
             set
             {
-                _postulations = value;
+                employes = value;
                 OnPropertyChanged("Postulations");
             }
         }
+
 
         /// <summary>
         /// Commande pour sauvegarder une offre
