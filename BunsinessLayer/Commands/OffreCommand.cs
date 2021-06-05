@@ -57,7 +57,6 @@ namespace BunsinessLayer.Commands
                 offre.Statut = offre.Statut;
             }
             _contexte.SaveChanges();
-
         }
 
     }

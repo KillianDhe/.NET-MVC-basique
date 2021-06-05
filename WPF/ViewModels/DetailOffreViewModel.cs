@@ -1,6 +1,7 @@
 ﻿using Model.Entities;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace WPF.ViewModels
 {
     public class DetailOffreViewModel : BaseViewModel
     {
+
         private string _intitule;
         private DateTime _date;
         private string _description;
@@ -26,6 +28,7 @@ namespace WPF.ViewModels
         /// </summary>
         public DetailOffreViewModel(Offre o)
         {
+
             _intitule = o.Intitule;
             _date = o.Date;
             _description = o.Description;
