@@ -38,7 +38,7 @@ namespace TestsUnitaires
         [TestMethod]
         public void AddOffre()
         {
-            Offre offreToAdd = new Offre() { Intitule = "super offre ! ", Salaire = 2500, Date = DateTime.Now, Statut = new Statut() { Libelle = "En attente" } };
+            Offre offreToAdd = new Offre() { Intitule = "super offre 2! ", Salaire = 2500, Date = DateTime.Now, Statut = new Statut() { Libelle = "En attente" } };
 
             BusinessManager manager = BusinessManager.Instance;
 

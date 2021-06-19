@@ -10,7 +10,6 @@ namespace Model.Entities
     {
         public int Id { get; set; }
         public string Libelle { get; set; }
-
         public List<Offre> Offres { get; set; }
     }
 }

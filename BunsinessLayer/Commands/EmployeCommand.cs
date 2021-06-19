@@ -26,26 +26,27 @@ namespace BunsinessLayer.Commands
         /// </summary>
         /// <param name="e">Employe à ajouter</param>
         /// <returns>Identifiant de l'mploye ajouté</returns>
-        public int Ajouter(Employe e)
+        public int Ajouter(Employe employeToAdd)
         {
-            _contexte.Employes.Add(e);
-            return _contexte.SaveChanges();
+            _contexte.Employes.Add(employeToAdd);
+            _contexte.SaveChanges();
+            return employeToAdd.Id;
         }
 
         /// <summary>
         /// Modifier un employe déjà présent en base à partir du contexte
         /// </summary>
         /// <param name="e">Employe à modifier</param>
-        public void Modifier(Employe e)
+        public void Modifier(Employe employeToEdit)
         {
-            Employe upEmp = _contexte.Employes.Where(emp => emp.Id == e.Id).FirstOrDefault();
+            Employe upEmp = _contexte.Employes.Where(emp => emp.Id == employeToEdit.Id).FirstOrDefault();
             if (upEmp != null)
             {
-                upEmp.Nom = e.Nom;
-                upEmp.Anciennete = e.Anciennete;
-                upEmp.Biographie = e.Biographie;
-                upEmp.DateDeNaissance = e.DateDeNaissance;
-                upEmp.Prenom = e.Prenom;
+                upEmp.Nom = employeToEdit.Nom;
+                upEmp.Anciennete = employeToEdit.Anciennete;
+                upEmp.Biographie = employeToEdit.Biographie;
+                upEmp.DateDeNaissance = employeToEdit.DateDeNaissance;
+                upEmp.Prenom = employeToEdit.Prenom;
             }
             _contexte.SaveChanges();
         }
@@ -56,7 +57,7 @@ namespace BunsinessLayer.Commands
         /// <param name="employeId">Identifiant de l'employe à supprimer</param>
         public void Supprimer(long employeId)
         {
-            Employe delEmp = _contexte.Employes.Where(emp => emp.Id == employeId).FirstOrDefault();
+            Employe delEmp = _contexte.Employes.Find(employeId);
             if (delEmp != null)
             {
                 _contexte.Employes.Remove(delEmp);
@@ -69,7 +70,7 @@ namespace BunsinessLayer.Commands
         /// </summary>
         /// <param name="employeId">Identifiant de l'employe</param>
         /// <param name="p">Postulation à ajoutée</param>
-        internal void AjouterPostulation(long employeId, Postulation p)
+        public void AjouterPostulation(long employeId, Postulation p)
         {
             Employe e = _contexte.Employes.Find(employeId);
             if (e != null)

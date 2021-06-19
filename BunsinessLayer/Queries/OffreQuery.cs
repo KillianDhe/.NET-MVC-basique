@@ -3,6 +3,7 @@ using Model;
 using Model.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,10 +35,10 @@ namespace BunsinessLayer.Queries
         /// <returns>IQueryable d'offres</returns>
         public Offre GetById(int id)
         {
-            Offre o = _contexte.Offres.Find(id);
-            if (o != null)
+            Offre offre = _contexte.Offres.Where(o => o.Id == id).Include(o => o.Statut).FirstOrDefault();
+            if (offre != null)
             {
-                return o;
+                return offre;
             }
             return null;
         }

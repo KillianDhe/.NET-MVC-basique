@@ -150,11 +150,11 @@ namespace BunsinessLayer
         /// Modifier une offre en base
         /// </summary>
         /// <param name="o">Offre à modifier</param>
-        public void ModifierOffre(Offre o)
+        public Offre ModifierOffre(Offre o)
         {
             // TODO : ajouter des contrôles sur le employe (exemple : vérification de champ, etc.)
             OffreCommand oc = new OffreCommand(contexte);
-            oc.Modifier(o);
+            return oc.Modifier(o);
         }
 
         /// <summary>

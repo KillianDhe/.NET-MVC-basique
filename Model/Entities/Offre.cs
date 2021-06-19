@@ -25,7 +25,5 @@ namespace Model.Entities
 
         public List<Postulation> Postuations {get;set;}
 
-        
-
     }
 }

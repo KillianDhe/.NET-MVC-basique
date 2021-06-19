@@ -1,0 +1,60 @@
+﻿@model ApplicationWeb.Models.OffreViewModel
+
+<div>
+    <h4>OffreViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Intitule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intitule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salaire)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salaire)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Statut.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model =>model.Statut.Libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responsable)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "AffichageModifierOffre", new { id = Model.Id }) |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>
