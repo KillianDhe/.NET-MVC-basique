@@ -5,11 +5,12 @@
 </p>
 
 <nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    @using (Html.BeginForm("RechercherOffre","Offre",FormMethod.Get,new { @class = "form-inline" }))
+    {
+        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" required>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</nav>
+       }
+    </nav>
 
 <table class="table">
     <tr>
@@ -26,7 +27,7 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Statut.Libelle)
+            @Html.DisplayNameFor(model => model.Statut)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Responsable)

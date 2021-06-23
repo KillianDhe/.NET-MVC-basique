@@ -52,6 +52,9 @@ namespace BunsinessLayer.Queries
             return _contexte.Offres.Where(o => o.Statut == statut);
         }
 
-
+        public IQueryable<Offre>RechercheByIntituleOrDescription(string recherche)
+        {
+            return _contexte.Offres.Where(o => o.Intitule.ToUpper().Contains(recherche.ToUpper()) || o.Description.ToUpper().Contains(recherche.ToUpper())).Include( o => o.Statut);
+        }
     }
 }

@@ -176,6 +176,12 @@ namespace BunsinessLayer
             return query.GetAllWithStatus(statut).ToList();
         }
 
+        public List<Offre> RechercheByIntituleOrDescription(string recherche)
+        {
+            OffreQuery offreQuery = new OffreQuery(contexte);
+            return offreQuery.RechercheByIntituleOrDescription(recherche).ToList();
+        }
+
         #endregion
 
         #region Postulation
@@ -211,6 +217,9 @@ namespace BunsinessLayer
             StatutQuery query = new StatutQuery(contexte);
             return query.getById(statutId);
         }
+
+
+
         #endregion
 
 

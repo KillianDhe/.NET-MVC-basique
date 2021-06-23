@@ -92,7 +92,25 @@ namespace ApplicationWeb.Controllers
                 return RedirectToAction("DetailOffre", new { id = idNouvelOffre });
             }
             return View(offreVm); 
+        }
 
+        public ActionResult RechercherOffre(string search)
+        {
+            if (String.IsNullOrWhiteSpace(search))
+            {
+                RedirectToAction("Index");
+            }
+
+            List < Offre > offres = businessManager.RechercheByIntituleOrDescription(search);
+
+            List<OffreViewModel> offresVm = new List<OffreViewModel>();
+
+            foreach(Offre offre in offres)
+            {
+                offresVm.Add(OffreViewModelConverter.ConvertOffreToOffreViewModel(offre));
+            }
+
+            return View("Index", offresVm);
         }
     }
 }
