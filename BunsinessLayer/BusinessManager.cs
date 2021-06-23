@@ -38,8 +38,8 @@ namespace BunsinessLayer
         /// <returns>Liste d'employe</returns>
         public List<Employe> GetAllEmploye()
         {
-            EmployeQuery eq = new EmployeQuery(contexte);
-            return eq.GetAll().ToList();
+            EmployeQuery employeQuery = new EmployeQuery(contexte);
+            return employeQuery.GetAll().ToList();
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace BunsinessLayer
         /// <returns>L'employe recherché</returns>
         public Employe GetEmployeById(int employeID)
         {
-            EmployeQuery eq = new EmployeQuery(contexte);
-            return eq.GetById(employeID);
+            EmployeQuery employeQuery = new EmployeQuery(contexte);
+            return employeQuery.GetById(employeID);
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace BunsinessLayer
         public int AjouterEmploye(Employe e)
         {
             // TODO : ajouter des contrôles sur le employe (exemple : vérification de champ, etc.)
-            EmployeCommand ec = new EmployeCommand(contexte);
-            return ec.Ajouter(e);
+            EmployeCommand employeCommand = new EmployeCommand(contexte);
+            return employeCommand.Ajouter(e);
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace BunsinessLayer
         public void ModifierEmploye(Employe e)
         {
             // TODO : ajouter des contrôles sur le employe (exemple : vérification de champ, etc.)
-            EmployeCommand ec = new EmployeCommand(contexte);
-            ec.Modifier(e);
+            EmployeCommand employeCommand = new EmployeCommand(contexte);
+            employeCommand.Modifier(e);
         }
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace BunsinessLayer
         /// <param name="employeID">Identifiant de l'employe à supprimer</param>
         public void SupprimerEmploye(int employeId)
         {
-            EmployeCommand ec = new EmployeCommand(contexte);
-            ec.Supprimer(employeId);
+            EmployeCommand employeCommand = new EmployeCommand(contexte);
+            employeCommand.Supprimer(employeId);
         }
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace BunsinessLayer
         /// <param name="p">Postulation à ajoutée</param>
         public void AjouterPostulationToEmploye(int employeId, Postulation p)
         {
-            EmployeCommand ec = new EmployeCommand(contexte);
-            ec.AjouterPostulation(employeId, p);
+            EmployeCommand employeCommand = new EmployeCommand(contexte);
+            employeCommand.AjouterPostulation(employeId, p);
         }
 
         public Employe GetEmployeByNom(string nom)
@@ -119,8 +119,8 @@ namespace BunsinessLayer
         /// <returns>Liste d'offres</returns>
         public List<Offre> GetAllOffres()
         {
-            OffreQuery oq = new OffreQuery(contexte);
-            return oq.GetAll().ToList();
+            OffreQuery offreQuery = new OffreQuery(contexte);
+            return offreQuery.GetAll().ToList();
         }
 
         /// <summary>
@@ -130,8 +130,8 @@ namespace BunsinessLayer
         /// <returns>L'employe recherché</returns>
         public Offre GetOffreById(int offreID)
         {
-            OffreQuery oq = new OffreQuery(contexte);
-            return oq.GetById(offreID);
+            OffreQuery offreQuery = new OffreQuery(contexte);
+            return offreQuery.GetById(offreID);
         }
 
         /// <summary>
@@ -139,22 +139,25 @@ namespace BunsinessLayer
         /// </summary>
         /// <param name="o">Offre à ajouter</param>
         /// <returns>Identifiant de la nouvelle offre</returns>
-        public int AjouterOffre(Offre o)
+        public int AjouterOffre(Offre offre)
         {
+            Statut newStatut = GetStatutById(offre.StatutId);
+            offre.Statut = newStatut;
             // TODO : ajouter des contrôles sur le employe (exemple : vérification de champ, etc.)
-            OffreCommand oc = new OffreCommand(contexte);
-            return oc.Ajouter(o);
+            OffreCommand offreCommand = new OffreCommand(contexte);
+            return offreCommand.Ajouter(offre);
         }
 
         /// <summary>
         /// Modifier une offre en base
         /// </summary>
         /// <param name="o">Offre à modifier</param>
-        public Offre ModifierOffre(Offre o)
+        public Offre ModifierOffre(Offre offre)
         {
-            // TODO : ajouter des contrôles sur le employe (exemple : vérification de champ, etc.)
-            OffreCommand oc = new OffreCommand(contexte);
-            return oc.Modifier(o);
+            Statut newStatut = GetStatutById(offre.StatutId);
+            offre.Statut = newStatut;
+            OffreCommand offreCommand = new OffreCommand(contexte);
+            return offreCommand.Modifier(offre);
         }
 
         /// <summary>
@@ -163,8 +166,8 @@ namespace BunsinessLayer
         /// <param name="offreID">Identifiant de l'offre à supprimer</param>
         public void SupprimerOffre(int offreID)
         {
-            OffreCommand oc = new OffreCommand(contexte);
-            oc.Supprimer(offreID);
+            OffreCommand offreCommand = new OffreCommand(contexte);
+            offreCommand.Supprimer(offreID);
         }
 
         public List<Offre> GetAllOffresByStatut(Statut statut)
@@ -190,5 +193,26 @@ namespace BunsinessLayer
         }
 
         #endregion
+
+        #region Statut
+        /// <summary>
+        /// Récupérer tous les statuts en base
+        /// </summary>
+        /// <returns>Liste de statuts</returns>
+        public List<Statut> GetAllStatuts()
+        {
+            StatutQuery query = new StatutQuery(contexte);
+            return query.GetAll().ToList();
+        }
+
+
+        public Statut GetStatutById(int statutId)
+        {
+            StatutQuery query = new StatutQuery(contexte);
+            return query.getById(statutId);
+        }
+        #endregion
+
+
     }
 }

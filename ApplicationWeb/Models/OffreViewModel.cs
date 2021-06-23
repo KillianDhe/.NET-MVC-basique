@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ApplicationWeb.Models
 {
@@ -11,8 +13,10 @@ namespace ApplicationWeb.Models
 
         public string Intitule { get; set; }
 
-        public DateTime Date { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? Date { get; set; }
 
+        [Range(0, int.MaxValue, ErrorMessage = "Un salaire négatif ??")]
         public float Salaire { get; set; }
 
         public string Description { get; set; }
@@ -21,6 +25,7 @@ namespace ApplicationWeb.Models
 
         public int StatutId { get; set; }
 
+        public SelectList Statuts;
         public string Responsable { get; set; }
 
     }

@@ -39,6 +39,7 @@ namespace BunsinessLayer.Commands
         public Offre Modifier(Offre offreEdited)
         {
             Offre offreToEdit = _contexte.Offres.Where(emp => emp.Id == offreEdited.Id).FirstOrDefault();
+
             if (offreToEdit != null)
             {
                 offreToEdit.Intitule = offreEdited.Intitule;

@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DropCreateWithDatas.cs" />
     <Compile Include="Entities\Employe.cs" />
     <Compile Include="Entities\Experience.cs" />
     <Compile Include="Entities\Formation.cs" />

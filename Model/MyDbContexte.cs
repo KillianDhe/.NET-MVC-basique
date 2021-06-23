@@ -11,9 +11,11 @@ namespace Model
 {
     public class MyDbContexte : DbContext
     {
+
+
         public MyDbContexte() : base("connectionString")
         {
-            Database.SetInitializer<MyDbContexte>(new DropCreateDatabaseIfModelChanges<MyDbContexte>());
+            Database.SetInitializer<MyDbContexte>(new DropCreateWithDatas());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

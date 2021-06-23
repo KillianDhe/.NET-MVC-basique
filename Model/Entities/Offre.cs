@@ -11,7 +11,7 @@ namespace Model.Entities
         public int Id { get; set; }
         public string Intitule { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         public float Salaire { get; set; }
 

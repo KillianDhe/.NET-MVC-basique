@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ApplicationWeb.Models.OffreViewModel>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter Offre", "AjouterOffre")
 </p>
 
 <nav class="navbar navbar-light bg-light">
@@ -58,9 +58,11 @@
                 @Html.DisplayFor(modelItem => item.Responsable)
             </td>
             <td>
-                @Html.ActionLink("Modifier", "AffichageModifierOffre", "Offre", new { id = item.Id }, null); |
-                @Html.ActionLink("Detail", "DetailOffre", "Offre", new { id = item.Id },null) |
-                @Html.ActionLink("Supprimer", "SupprimerOffre", "Offre", new { id = item.Id },null)
+                @Html.ActionLink("Modifier", "ModifierOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" }); |
+                @Html.ActionLink("Detail", "DetailOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" }) |
+                @Html.ActionLink("Postuler", "PostulerOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" }) |
+
+                @Html.ActionLink("Supprimer", "SupprimerOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" })
             </td>
         </tr>
     }

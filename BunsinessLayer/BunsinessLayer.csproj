@@ -58,6 +58,7 @@
     <Compile Include="Queries\EmployeQuery.cs" />
     <Compile Include="Queries\OffreQuery.cs" />
     <Compile Include="Queries\PostulationQuery.cs" />
+    <Compile Include="Queries\StatutQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Console\Console.csproj">

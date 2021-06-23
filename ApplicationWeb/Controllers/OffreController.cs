@@ -30,18 +30,30 @@ namespace ApplicationWeb.Controllers
             return View(offresViewModel);
         }
 
-        public ActionResult AffichageModifierOffre(int id)
+        public ActionResult ModifierOffre(int id)
         {
             Offre offretoModify = businessManager.GetOffreById(id);
-            return View(OffreViewModelConverter.ConvertOffreToOffreViewModel(offretoModify));
+
+            OffreViewModel offreVmToModify = OffreViewModelConverter.ConvertOffreToOffreViewModel(offretoModify);
+
+            List<Statut> statuts = businessManager.GetAllStatuts();
+            offreVmToModify.Statuts = new SelectList(statuts, "Id", "Libelle");
+
+            return View(offreVmToModify);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ModifierOffre(OffreViewModel offreVm)
         {
-            Offre offretoModify = OffreViewModelConverter.ConvertOffreViewModelToOffre(offreVm);
-            Offre offreUpdated = businessManager.ModifierOffre(offretoModify);
-            OffreViewModel offreUpdatedViewModem = OffreViewModelConverter.ConvertOffreToOffreViewModel(offreUpdated);
-            return View("DetailOffre", offreUpdatedViewModem);
+            if (ModelState.IsValid)
+            {
+                Offre offretoModify = OffreViewModelConverter.ConvertOffreViewModelToOffre(offreVm);
+                Offre offreUpdated = businessManager.ModifierOffre(offretoModify);
+                offreVm = OffreViewModelConverter.ConvertOffreToOffreViewModel(offreUpdated);
+            }
+
+            return View("DetailOffre", offreVm);
         }
 
 
@@ -51,12 +63,36 @@ namespace ApplicationWeb.Controllers
             return View(OffreViewModelConverter.ConvertOffreToOffreViewModel(offre));
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SupprimerOffre(int id)
         {
             businessManager.SupprimerOffre(id);
             return RedirectToAction("Index");
         }
 
+        public ActionResult AjouterOffre()
+        {
+            OffreViewModel vm = new OffreViewModel();
 
+            List<Statut> statuts = businessManager.GetAllStatuts();
+            vm.Statuts = new SelectList(statuts, "Id", "Libelle");
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AjouterOffre(OffreViewModel offreVm)
+        {
+            if (ModelState.IsValid)
+            {
+                Offre offretoAdd = OffreViewModelConverter.ConvertOffreViewModelToOffre(offreVm);
+                int idNouvelOffre = businessManager.AjouterOffre(offretoAdd);
+                return RedirectToAction("DetailOffre", new { id = idNouvelOffre });
+            }
+            return View(offreVm); 
+
+        }
     }
 }
