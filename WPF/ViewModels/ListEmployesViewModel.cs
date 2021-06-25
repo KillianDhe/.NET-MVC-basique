@@ -11,10 +11,10 @@ namespace WPF.ViewModels
         private ObservableCollection<DetailEmployeViewModel> _employes = null;
         private DetailEmployeViewModel _selectedEmploye;
 
-        public ListEmployesViewModel()
+        public ListEmployesViewModel(int offreId)
         {
             _employes = new ObservableCollection<DetailEmployeViewModel>();
-            foreach (Employe employe in BusinessManager.Instance.GetAllEmploye())
+            foreach (Employe employe in BusinessManager.Instance.GetAllPostulantsByOffreId(offreId))
             {
                 _employes.Add(new DetailEmployeViewModel(employe));
             }

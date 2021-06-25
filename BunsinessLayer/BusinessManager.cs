@@ -198,6 +198,12 @@ namespace BunsinessLayer
             return query.GetByOffreIdAndEmployeId(offreid, postulationId).FirstOrDefault();
         }
 
+        public IQueryable<Employe> GetAllPostulantsByOffreId(int offreId)
+        {
+            EmployeQuery query = new EmployeQuery(contexte);
+            return query.GetAllPostulantsByOffreId(offreId);
+        }
+
         #endregion
 
         #region Statut

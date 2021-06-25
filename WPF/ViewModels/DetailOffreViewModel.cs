@@ -18,7 +18,7 @@ namespace WPF.ViewModels
 
         private int _id;
         private string _intitule;
-        private DateTime _date;
+        private DateTime? _date;
         private string _description;
         private float _salaire;
         private string _responsable;
@@ -32,7 +32,7 @@ namespace WPF.ViewModels
         /// </summary>
         public DetailOffreViewModel(Offre o)
         {
-            listEmployeViewModel = new ListEmployesViewModel();
+            listEmployeViewModel = new ListEmployesViewModel(o.Id);
 
             _id = o.Id;
             _intitule = o.Intitule;
@@ -67,7 +67,7 @@ namespace WPF.ViewModels
         /// <summary>
         /// Date de l'offre
         /// </summary>
-        public DateTime Date
+        public DateTime? Date
         {
             get { return _date; }
             set { 
