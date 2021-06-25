@@ -23,6 +23,11 @@ namespace Model.Entities
         public List<Formation> Formations { get; set; }
         public List<Experience> Experience { get; set; }
 
+        public string Identite { get
+            {
+                return $"{Nom ?? ""} {Prenom ?? ""} né(e) le {DateDeNaissance.ToString("dd'/'MM'/'yyyy")}";
+            } 
+        }
 
     }
 }

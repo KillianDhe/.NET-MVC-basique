@@ -25,7 +25,7 @@ namespace ApplicationWeb.Models
 
         public int StatutId { get; set; }
 
-        public SelectList Statuts;
+        public SelectList Statuts { get; set; }
         public string Responsable { get; set; }
 
     }
