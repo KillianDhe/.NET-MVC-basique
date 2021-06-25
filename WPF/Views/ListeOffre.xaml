@@ -19,23 +19,36 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" Grid.Row="0" 
-                  Grid.RowSpan="3" Margin="5" 
-                  Style="{DynamicResource MaterialDesignListView}"
-                  materialDesign:ShadowAssist.ShadowDepth="Depth2"
-                  ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" 
-                  SelectedItem="{Binding SelectedOffres, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn 
-                            Header="Intitule" 
-                            DisplayMemberBinding="{Binding Intitule}" />
-                    <GridViewColumn 
-                            Header="Date" 
-                            DisplayMemberBinding="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ComboBox Grid.Row="0" materialDesign:HintAssist.Hint="Statut" Margin="50,0" 
+                      ItemsSource="{Binding Status}"/>
+          
+
+            <ListView Grid.Row="1" Margin="5" 
+                      Style="{DynamicResource MaterialDesignListView}"
+                      materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                      ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedItem="{Binding SelectedOffres, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn 
+                                Header="Intitule" 
+                                DisplayMemberBinding="{Binding Intitule}" />
+                        <GridViewColumn 
+                                Header="Date" 
+                                DisplayMemberBinding="{Binding Date, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                        <GridViewColumn 
+                                Header="Statut" 
+                                DisplayMemberBinding="{Binding Statut}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
 
         <local:DetailOffre 
                 Grid.Column="1" 

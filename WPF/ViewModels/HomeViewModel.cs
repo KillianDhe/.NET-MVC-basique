@@ -39,7 +39,7 @@ namespace WPF.ViewModels
 
         private void addOffre()
         {
-            throw new NotImplementedException();
+            //Do nothing
         }
 
     }

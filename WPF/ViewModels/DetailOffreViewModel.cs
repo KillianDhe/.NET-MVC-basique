@@ -22,7 +22,7 @@ namespace WPF.ViewModels
         private string _description;
         private float _salaire;
         private string _responsable;
-        private Statut _statut;
+        private string _statut;
         private ICollection<Employe> employes;
         private RelayCommand _saveOffre;
 
@@ -40,7 +40,7 @@ namespace WPF.ViewModels
             _description = o.Description;
             _salaire = o.Salaire;
             _responsable = o.Responsable;
-            _statut = o.Statut;
+            _statut = o.Statut?.Libelle;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace WPF.ViewModels
         /// <summary>
         /// Statut de l'offre
         /// </summary>
-        public Statut Statut
+        public string Statut
         {
             get { return _statut; }
             set { 
@@ -160,8 +160,7 @@ namespace WPF.ViewModels
                 Date = _date,
                 Description = _description,
                 Salaire = _salaire,
-                Responsable = _responsable,
-                Statut = _statut
+                Responsable = _responsable
             });
         }
     }
