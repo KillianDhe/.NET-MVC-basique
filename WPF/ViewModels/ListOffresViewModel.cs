@@ -16,6 +16,7 @@ namespace WPF.ViewModels
 
         private ObservableCollection<DetailOffreViewModel> _offres = null;
         private DetailOffreViewModel _selectedOffres;
+        private ObservableCollection<Statut> _statuts;
 
         public ListOffresViewModel()
         {
@@ -28,6 +29,7 @@ namespace WPF.ViewModels
 
             if (_offres != null && _offres.Count > 0)
                 _selectedOffres = _offres.ElementAt(0);
+            _statuts = new ObservableCollection<Statut>(BusinessManager.Instance.GetAllStatuts());
         }
 
         /// <summary>
@@ -54,6 +56,11 @@ namespace WPF.ViewModels
                 _selectedOffres = value;
                 OnPropertyChanged("SelectedOffres");
             }
+        }
+
+        public ObservableCollection<Statut> Statuts
+        {
+            get { return _statuts; }
         }
     }
 }

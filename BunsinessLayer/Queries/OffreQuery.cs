@@ -25,7 +25,7 @@ namespace BunsinessLayer.Queries
         /// <returns>IQueryable d'offres</returns>
         public IQueryable<Offre> GetAll()
         {
-            return _contexte.Offres;
+            return _contexte.Offres.Include(o => o.Statut);
         }
 
 
