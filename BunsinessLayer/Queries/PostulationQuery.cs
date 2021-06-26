@@ -29,14 +29,22 @@ namespace BunsinessLayer.Queries
 
 
         /// <summary>
-        /// Récupérer toutes les offres
+        /// Récupérer 
         /// </summary>
-        /// <returns>IQueryable d'offres</returns>
+        /// <returns>IQueryable d'Postulation</returns>
         public IQueryable<Postulation> GetByOffreIdAndEmployeId(int offreId, int employeId)
         {
             return _contexte.Postulations.Where(o => o.OffreId == offreId && o.EmployeId == employeId);
         }
 
+        /// <summary>
+        /// Récupérer toutes les postulations d'un employe
+        /// </summary>
+        /// <returns>IQueryable de Postulation</returns>
+        public IQueryable<Postulation> GetByOffreAndEmployeId(int employeId)
+        {
+            return _contexte.Postulations.Where( o => o.EmployeId == employeId);
+        }
 
     }
 }

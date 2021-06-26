@@ -70,7 +70,7 @@ namespace BunsinessLayer.Commands
         /// </summary>
         /// <param name="employeId">Identifiant de l'employe</param>
         /// <param name="p">Postulation à ajoutée</param>
-        public void AjouterPostulation(long employeId, Postulation p)
+        public void AjouterPostulation(int employeId, Postulation p)
         {
             Employe e = _contexte.Employes.Find(employeId);
             if (e != null)

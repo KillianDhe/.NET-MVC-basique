@@ -13,7 +13,7 @@ namespace Model
     {
 
 
-        public MyDbContexte() : base("Connexion")
+        public MyDbContexte() : base("connectionString")
         {
             Database.SetInitializer<MyDbContexte>(new DropCreateWithDatas());
         }

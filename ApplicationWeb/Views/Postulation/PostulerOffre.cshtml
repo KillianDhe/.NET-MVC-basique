@@ -1,9 +1,12 @@
 ﻿@model ApplicationWeb.Models.PostulationViewModel
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("PostulerOffre", "Postulation")) 
 {
+
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(m => m.OffreId)
+
+
     <div class="form-horizontal">
         <h4>PostulationViewModel</h4>
         <hr />

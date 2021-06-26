@@ -62,7 +62,7 @@
             <td>
                 @Html.ActionLink("Modifier", "ModifierOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" })
                 @Html.ActionLink("Detail", "DetailOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" }) 
-                @Html.ActionLink("Postuler", "PostulerOffre", "Offre", new { offreId = item.Id }, new { @class = "btn-primary btn" })
+                @Html.ActionLink("Postuler", "PostulerOffre", "Postulation", new { offreId = item.Id }, new { @class = "btn-primary btn" })
                 @Html.ActionLink("Supprimer", "SupprimerOffre", "Offre", new { id = item.Id }, new { @class = "btn-primary btn" })
             </td>
         </tr>

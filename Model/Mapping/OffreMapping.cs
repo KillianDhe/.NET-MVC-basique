@@ -22,7 +22,7 @@ namespace Model.Mapping
 
             Property(o => o.StatutId).IsRequired().HasColumnName("STA_ID");
             Property(o => o.Responsable).HasColumnName("OFF_RESPONSABLE");
-
+            
             HasRequired(o => o.Statut).WithMany(o => o.Offres).HasForeignKey(o => o.StatutId);
             HasMany(o => o.Postuations).WithRequired(p => p.Offre).HasForeignKey(p => p.OffreId);
         }

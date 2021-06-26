@@ -113,15 +113,6 @@ namespace ApplicationWeb.Controllers
             return View("Index", offresVm);
         }
 
-        public ActionResult PostulerOffre(int offreId)
-        {
-            PostulationViewModel postulationViewModel = new PostulationViewModel();
-            postulationViewModel.OffreId = offreId;
 
-            List<Employe> employes = businessManager.GetAllEmploye();
-            postulationViewModel.Employes = new SelectList(employes, "Id", "Identite");
-
-            return View(postulationViewModel);
-        }
     }
 }

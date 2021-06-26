@@ -132,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OffreController.cs" />
+    <Compile Include="Controllers\PostulationController.cs" />
     <Compile Include="Converter\OffreViewModelConverter.cs" />
     <Compile Include="Converter\StatutViewModelConverter.cs" />
     <Compile Include="Global.asax.cs">
@@ -655,7 +656,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Views\Offre\AjouterOffre.cshtml" />
-    <Content Include="Views\Offre\PostulerOffre.cshtml" />
+    <Content Include="Views\Postulation\PostulerOffre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
