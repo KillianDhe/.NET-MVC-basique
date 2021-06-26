@@ -49,7 +49,7 @@ namespace BunsinessLayer.Queries
         /// <returns>IQueryable d'offres</returns>
         public IQueryable<Offre> GetAllWithStatus(Statut statut)
         {
-            return _contexte.Offres.Where(o => o.Statut == statut);
+            return _contexte.Offres.Where(o => o.Statut.Id == statut.Id);
         }
 
         public IQueryable<Offre>RechercheByIntituleOrDescription(string recherche)
