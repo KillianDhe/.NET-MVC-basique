@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WPF.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="475" d:DesignWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -25,9 +25,16 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <ComboBox Grid.Row="0" materialDesign:HintAssist.Hint="Statut" Margin="50,0" 
-                      ItemsSource="{Binding Status}"/>
-          
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,2">
+                <ComboBox materialDesign:HintAssist.Hint="Statut"
+                          ItemsSource="{Binding Statuts}" DisplayMemberPath="Libelle" SelectedValuePath="Id" 
+                          SelectedItem="{Binding SelectedStatut,  UpdateSourceTrigger=PropertyChanged}" Margin="0,0,5,0"/>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" 
+                        Margin="5,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}"
+                        Command="{Binding SupprSelectedStatut}">
+                    <materialDesign:PackIcon Kind="Bin"/>
+                </Button>
+            </StackPanel>
 
             <ListView Grid.Row="1" Margin="5" 
                       Style="{DynamicResource MaterialDesignListView}"

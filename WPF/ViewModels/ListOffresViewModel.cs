@@ -17,18 +17,13 @@ namespace WPF.ViewModels
         private ObservableCollection<DetailOffreViewModel> _offres = null;
         private DetailOffreViewModel _selectedOffres;
         private ObservableCollection<Statut> _statuts;
+        private Statut _selectedStatut;
+        private RelayCommand _supprSelectedStatut;
 
         public ListOffresViewModel()
         {
-            // on appelle le mock pour initialiser une liste de produits
-            _offres = new ObservableCollection<DetailOffreViewModel>();
-            foreach (Offre o in BusinessManager.Instance.GetAllOffres())
-            {
-                _offres.Add(new DetailOffreViewModel(o));
-            }
-
-            if (_offres != null && _offres.Count > 0)
-                _selectedOffres = _offres.ElementAt(0);
+            loadOffre(BusinessManager.Instance.GetAllOffres());
+            
             _statuts = new ObservableCollection<Statut>(BusinessManager.Instance.GetAllStatuts());
         }
 
@@ -58,9 +53,61 @@ namespace WPF.ViewModels
             }
         }
 
+        /// <summary>
+        /// Listes des statuts
+        /// </summary>
         public ObservableCollection<Statut> Statuts
         {
             get { return _statuts; }
         }
+
+        /// <summary>
+        /// Statur sélectionné
+        /// </summary>
+        public Statut SelectedStatut
+        {
+            get { return _selectedStatut; }
+            set { 
+                _selectedStatut = value;
+                OnPropertyChanged("SelectedStatut");
+
+                if (!(_selectedStatut == null))
+                    loadOffre(BusinessManager.Instance.GetAllOffresByStatut(_selectedStatut));
+                else
+                    loadOffre(BusinessManager.Instance.GetAllOffres());
+                OnPropertyChanged("Offres");
+            }
+        }
+
+        public RelayCommand SupprSelectedStatut
+        {
+            get
+            {
+                if (_supprSelectedStatut == null)
+                    _supprSelectedStatut = new RelayCommand(() => this.supprSelectedStatut());
+                return _supprSelectedStatut;
+            }
+        }
+
+        private void loadOffre(List<Offre> offres)
+        {
+            _offres = new ObservableCollection<DetailOffreViewModel>();
+            foreach (Offre o in offres)
+            {
+                _offres.Add(new DetailOffreViewModel(o));
+            }
+            OnPropertyChanged("Offres");
+
+            if (_offres != null && _offres.Count > 0)
+                _selectedOffres = _offres.ElementAt(0);
+            OnPropertyChanged("SelectedOffres");
+        }
+
+        private void supprSelectedStatut()
+        {
+            SelectedStatut = null;
+            OnPropertyChanged("SelectedStatut");
+        }
+
     }
 }
