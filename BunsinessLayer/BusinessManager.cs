@@ -204,10 +204,10 @@ namespace BunsinessLayer
             return query.GetAllPostulantsByOffreId(offreId);
         }
 
-        public IQueryable<Postulation> GetAlPostulationsByEmployeId(int employeId)
+        public List<Postulation> GetAlPostulationsByEmployeId(int employeId)
         {
             PostulationQuery query = new PostulationQuery(contexte);
-            return query.GetByOffreAndEmployeId(employeId);
+            return query.GetAllByEmployeId(employeId).ToList();
         }
 
         public Postulation Postuler(int offreId, int employeId)

@@ -63,8 +63,7 @@ namespace ApplicationWeb.Controllers
             return View(OffreViewModelConverter.ConvertOffreToOffreViewModel(offre));
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult SupprimerOffre(int id)
         {
             businessManager.SupprimerOffre(id);
@@ -91,6 +90,9 @@ namespace ApplicationWeb.Controllers
                 int idNouvelOffre = businessManager.AjouterOffre(offretoAdd);
                 return RedirectToAction("DetailOffre", new { id = idNouvelOffre });
             }
+            List<Statut> statuts = businessManager.GetAllStatuts();
+            offreVm.Statuts = new SelectList(statuts, "Id", "Libelle");
+
             return View(offreVm); 
         }
 

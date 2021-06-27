@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ApplicationWeb.Models.PostulationViewModel>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Initule de l'offre")
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Statut)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Offre.Intitule)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Statut)
+    </td>
+    <td>
+        @Html.ActionLink("Voir l'offre", "DetailOffre", "Offre", new { id = item.OffreId }, new { @class = "btn-primary btn" })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<ApplicationWeb.Models.OffreViewModel>
 
-<p>
-    @Html.ActionLink("Ajouter Offre", "AjouterOffre")
-</p>
-
     <nav class="navbar navbar-light bg-light d-flex flex-row">
         @using (Html.BeginForm("RechercherOffre", "Offre", FormMethod.Get, new { @class = "form-inline d-flex" }))
         {

@@ -19,14 +19,20 @@ namespace BunsinessLayer.Commands
 
 
 
-        public Postulation Postuler(int employeId, int OffreId)
+        public Postulation Postuler(int employeId, int offreId)
         {
+            Postulation existante = _contexte.Postulations.Where(p => p.OffreId == offreId  && p.EmployeId == employeId).FirstOrDefault();
+            if(existante != null)
+            {
+                return existante;
+            }
+
             Postulation postulation = new Postulation()
             {
                 Date = DateTime.Now,
                 Statut = "nouveau",
                 EmployeId = employeId,
-                OffreId = OffreId,
+                OffreId = offreId,
             };
 
             _contexte.Postulations.Add(postulation);

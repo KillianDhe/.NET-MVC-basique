@@ -1,4 +1,5 @@
-﻿using ApplicationWeb.Models;
+﻿using ApplicationWeb.Converter;
+using ApplicationWeb.Models;
 using BunsinessLayer;
 using Model.Entities;
 using System;
@@ -36,11 +37,31 @@ namespace ApplicationWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                businessManager.Postuler(vm.EmployeId, vm.OffreId);
+                businessManager.Postuler(vm.OffreId, vm.EmployeId);
                 return RedirectToAction("Index","Home");
             }
 
             return RedirectToAction("PostulerOffre", new { offreId = vm.OffreId });
+        }
+
+        public ActionResult MesPostulations()
+        {
+            EmloyeDropDown vm = new EmloyeDropDown();
+            List<Employe> employes = businessManager.GetAllEmploye();
+            vm.Employes = new SelectList(employes, "Id", "Identite");
+
+            return View(vm);
+        }
+
+        public ActionResult AfficherPostulationsByEmploye(int employeId)
+        {
+            List<Postulation> postulations = businessManager.GetAlPostulationsByEmployeId(employeId);
+            List<PostulationViewModel> listeVm = new List<PostulationViewModel>();
+            foreach(Postulation p in postulations)
+            {
+                listeVm.Add(PostulationViewModelConverter.ConvertToViewModel(p));
+            }
+            return PartialView(listeVm);
         }
     }
 }

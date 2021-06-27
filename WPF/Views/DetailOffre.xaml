@@ -53,7 +53,6 @@
                  VerticalAlignment="Stretch" VerticalScrollBarVisibility="Visible" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
                  IsEnabled="{Binding ElementName=toggleModif, Path=IsChecked}"/>
 
-
         <local:ListeEmployes
                 Grid.Row="4"
                  Grid.ColumnSpan="5"

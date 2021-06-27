@@ -13,11 +13,12 @@
                   SelectedItem="{Binding SelectedEmploye, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
+
                     <GridViewColumn 
-                            Header="Nom" 
+                            Header="Nom postulant" 
                             DisplayMemberBinding="{Binding Nom}" />
                     <GridViewColumn 
-                            Header="Prenom" 
+                            Header="Prenom postulant" 
                             DisplayMemberBinding="{Binding Prenom}" />
                 </GridView>
             </ListView.View>

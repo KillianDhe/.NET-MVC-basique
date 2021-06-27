@@ -134,10 +134,12 @@
     <Compile Include="Controllers\OffreController.cs" />
     <Compile Include="Controllers\PostulationController.cs" />
     <Compile Include="Converter\OffreViewModelConverter.cs" />
+    <Compile Include="Converter\PostulationViewModelConverter.cs" />
     <Compile Include="Converter\StatutViewModelConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmloyeDropDown.cs" />
     <Compile Include="Models\OffreViewModel.cs" />
     <Compile Include="Models\PostulationViewModel.cs" />
     <Compile Include="Models\StatutViewModel.cs" />
@@ -657,6 +659,8 @@
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Views\Offre\AjouterOffre.cshtml" />
     <Content Include="Views\Postulation\PostulerOffre.cshtml" />
+    <Content Include="Views\Postulation\MesPostulations.cshtml" />
+    <Content Include="Views\Postulation\AfficherPostulationsByEmploye.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

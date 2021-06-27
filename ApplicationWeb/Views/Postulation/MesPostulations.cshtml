@@ -1,0 +1,51 @@
+﻿@model ApplicationWeb.Models.EmloyeDropDown
+
+<div>
+    <h4>Mes Posulations</h4>
+    <hr />
+
+        <div class="form-group">
+            @Html.Label("T'es qui chacal , ya pas d'authentif ici", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.EmployeId, Model.Employes, "---Employee--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EmployeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div id="liste">
+
+        </div>
+</div>
+
+<script>
+
+    function afficherPostulations(value) {
+        if (value) {
+            let listePostulationsURL = "@Url.Action("AfficherPostulationsByEmploye")";
+            let data = {
+                employeId: value
+            };
+            console.log("zeze");
+            $.get(listePostulationsURL, data, function (result) {
+                console.log("zeze");
+                $("#liste").html(result);
+            })
+            console.log("zeze");
+        }
+        else {
+            $("#liste").html("");
+        }
+    }
+
+    $(document).ready(function () {
+
+        let value = $("#EmployeId").children("option:selected").val();
+        console.log(value);
+        afficherPostulations(value);
+
+        $("#EmployeId").on('change', function () {
+            value = $(this).children("option:selected").val();
+            afficherPostulations(value);
+        });
+    });
+</script>
